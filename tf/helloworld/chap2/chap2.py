@@ -64,7 +64,6 @@ with tf.Session() as sess:
 
   print ("centroids")
   print (centroid_values)
-  print (assignment_values)
   
 data = {"x": [], "y": [], "cluster": []}
 for i in xrange(len(assignment_values)):

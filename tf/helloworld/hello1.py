@@ -1,6 +1,7 @@
+# encoding: utf-8  
 import tensorflow as tf
 
-# 声明变量。
+#声明变量。
 w1 = tf.Variable(tf.random_normal([2, 3], stddev=1, seed=1))
 b1 = tf.Variable(tf.constant(0.0, shape=[3]))
 w2 = tf.Variable(tf.random_normal([3, 1], stddev=1, seed=1))
