@@ -13,7 +13,7 @@ def add_layer(inputs,in_size,out_size,activation_function=None):
         outputs = activation_function(Wx_plus_b)
     return outputs
 
-def comput_ccuray(v_xs,v_ys):
+def comput_accuracy(v_xs,v_ys):
     global prediction
     y_pre = sess.run(prediction,feed_dict={xs:v_xs})
     correct_prediction = tf.equal(tf.argmax(y_pre,1),tf.argmax(v_ys,1))
@@ -39,7 +39,7 @@ for i in range(1000):
     batch_xs,batch_ys = mnist.train.next_batch(100)
     sess.run(train_step,feed_dict={xs:batch_xs,ys:batch_ys})
     if i%50==0:
-        print(comput_ccuray(batch_xs,batch_ys))
+        print(comput_accuracy(batch_xs,batch_ys))
     
             
             
