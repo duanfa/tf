@@ -40,7 +40,7 @@ with tf.name_scope('train'):
 init = tf.initialize_all_variables()
 sess = tf.Session()
 merge = tf.summary.merge_all()
-writer = tf.summary.FileWriter("/Users/duanfa/Documents/Nutstore/tf/morvan/tensorflowboard/",sess.graph)
+writer = tf.summary.FileWriter("/Users/duanfa/Documents/Nutstore/tf/morvan/tensorflowboard/boardDemo/",sess.graph)
 sess.run(init)
 
 

@@ -1,14 +1,18 @@
 import numpy as np
+import tensorflow as tf
 
-x_datas = np.linspace(-1,1,300)[:,np.newaxis]
-in_size,out_size=1,10
 
-Weights = np.random.normal([in_size,out_size])
+in_size=1
+out_size=10
 
-result = np.multiply(x_datas,Weights)
-result2 = np.multiply(Weights,x_datas)
+Weights = tf.Variable(tf.random_normal([in_size,out_size]))
 
-print(Weights.shape)
-print(x_datas.shape)
-print(result.shape)
-print(result2.shape)
+inputs = np.linspace(-1,1,300)[:,np.newaxis]
+
+Wx_plus_b = tf.matmul(inputs,Weights)
+
+init = tf.initialize_all_variables()
+sess = tf.Session()
+sess.run(init)
+print(Wx_plus_b.shape)
+sess.run(Wx_plus_b)
