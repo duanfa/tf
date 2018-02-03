@@ -42,7 +42,7 @@ def RNN(X,weighs,biases):
     #X_in ==> (128batch*28 steps,128 hidden)
     X_in = tf.matmul(X,weights['in']) + biases['in']
     #X_in ==> (128batch ,28 steps,128 hidden)
-    X_in = tf.reshape(X_in,[-1,n_steps,n_hidden_units])
+    X_in = tf.reshape(X_in,[-1,n_steps,n_hidden_units]) 
     
     #cell
     ###############################################################
@@ -52,7 +52,7 @@ def RNN(X,weighs,biases):
     
     outputs,states = tf.nn.dynamic_rnn(lstm_cell,X_in,initial_state=_init_state,time_major=False)
     
-    
+
     #hidden layer for output as the final results
     ############################################################### 
     results = tf.matmul(states[1],weights['out']) + biases['out']
