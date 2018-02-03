@@ -47,7 +47,7 @@ class LSTMRNN(object):
         with tf.name_scope('train'):
             self.train_op = tf.train.AdamOptimizer(LR).minimize(self.cost)
 
-    def add_input_layer(self,):
+    def add_input_layer(self):
         l_in_x = tf.reshape(self.xs, [-1, self.input_size], name='2_2D')  # (batch*n_step, in_size)
         # Ws (in_size, cell_size)
         Ws_in = self._weight_variable([self.input_size, self.cell_size])
