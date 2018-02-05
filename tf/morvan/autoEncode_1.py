@@ -101,20 +101,3 @@ with tf.Session() as sess:
         a[0][i].imshow(np.reshape(mnist.test.images[i], (28, 28)))
         a[1][i].imshow(np.reshape(encode_decode[i], (28, 28)))
     plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

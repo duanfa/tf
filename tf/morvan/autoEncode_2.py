@@ -2,7 +2,6 @@
 from __future__ import division,print_function,absolute_import
 
 import tensorflow as tf
-import numpy as np
 import matplotlib.pyplot as plt
 
 #Import MNIST data
@@ -102,24 +101,7 @@ with tf.Session() as sess:
 
     print("Optimization Finished!")
 
-    encoder_result = sess.run(encoder_op, feed_dict={X: mnist.test.images})
+    encoder_result = sess.run(encoder_op, feed_dict={X: mnist.test.images}) 
     plt.scatter(encoder_result[:, 0], encoder_result[:, 1], c=mnist.test.labels)
     plt.colorbar()
     plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
