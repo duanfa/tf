@@ -2,7 +2,7 @@
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
-
+import constants
 
 BATCH_START = 0
 TIME_STEPS = 20
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     model = LSTMRNN(TIME_STEPS, INPUT_SIZE, OUTPUT_SIZE, CELL_SIZE, BATCH_SIZE)
     sess = tf.Session()
     merged = tf.summary.merge_all()
-    writer = tf.summary.FileWriter("/Users/duanfa/Documents/Nutstore/tf/morvan/tensorflowboard/rnnRegression/", sess.graph)
+    writer = tf.summary.FileWriter(constants.getNutstorDir()+"/tf/morvan/tensorflowboard/rnnRegression/", sess.graph)
     # tf.initialize_all_variables() no long valid from
     # 2017-03-02 if using tensorflow >= 0.12
     if int((tf.__version__).split('.')[1]) < 12 and int((tf.__version__).split('.')[0]) < 1:
