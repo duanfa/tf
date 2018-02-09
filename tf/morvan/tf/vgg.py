@@ -1,4 +1,5 @@
-from urllib.request import urlretrieve
+#encoding:utf-8
+# from urllib.request import urlretrieve
 import os
 import numpy as np
 import tensorflow as tf
@@ -8,19 +9,19 @@ import matplotlib.pyplot as plt
 import constants
 
 
-def download():     # download tiger and kittycat image
-    categories = ['tiger', 'kittycat']
-    for category in categories:
-        os.makedirs('./for_transfer_learning/data/%s' % category, exist_ok=True)
-        with open('./for_transfer_learning/imagenet_%s.txt' % category, 'r') as file:
-            urls = file.readlines()
-            n_urls = len(urls)
-            for i, url in enumerate(urls):
-                try:
-                    urlretrieve(url.strip(), './for_transfer_learning/data/%s/%s' % (category, url.strip().split('/')[-1]))
-                    print('%s %i/%i' % (category, i, n_urls))
-                except:
-                    print('%s %i/%i' % (category, i, n_urls), 'no image')
+# def download():     # download tiger and kittycat image
+#     categories = ['tiger', 'kittycat']
+#     for category in categories:
+#         os.makedirs('./for_transfer_learning/data/%s' % category, exist_ok=True)
+#         with open('./for_transfer_learning/imagenet_%s.txt' % category, 'r') as file:
+#             urls = file.readlines()
+#             n_urls = len(urls)
+#             for i, url in enumerate(urls):
+#                 try:
+#                     urlretrieve(url.strip(), './for_transfer_learning/data/%s/%s' % (category, url.strip().split('/')[-1]))
+#                     print('%s %i/%i' % (category, i, n_urls))
+#                 except:
+#                     print('%s %i/%i' % (category, i, n_urls), 'no image')
 
 
 def load_img(path):
@@ -40,7 +41,7 @@ def load_img(path):
 def load_data():
     imgs = {'tiger': [], 'kittycat': []}
     for k in imgs.keys():
-        dir = constants.getNutstorDir()+'/tf/morvan/images' + k
+        dir = constants.getNutstorDir()+'/tf/morvan/images/' + k
         for file in os.listdir(dir):
             if not file.lower().endswith('.jpg'):
                 continue
@@ -64,7 +65,7 @@ class Vgg16:
         # pre-trained parameters
         try:
             self.data_dict = np.load(vgg16_npy_path, encoding='latin1').item()
-        except FileNotFoundError:
+        except IOError:
             print('Please download VGG16 parameters at here https://mega.nz/#!YU1FWJrA!O1ywiCS2IiOlUCtCpI6HTJOMrneN-Qdv3ywQP5poecM')
 
         self.tfx = tf.placeholder(tf.float32, [None, 224, 224, 3])
@@ -177,5 +178,5 @@ def eval():
 
 if __name__ == '__main__':
     # download()
-    # train()
-    eval()
+    train()
+#     eval()
