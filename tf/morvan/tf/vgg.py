@@ -170,13 +170,13 @@ def train():
 
 
 def eval():
-    vgg = Vgg16(vgg16_npy_path='./morvan/tf/vgg16.npy',
-                restore_from='./morvan/tf/vggmodel/transfer_learn')
+    vgg = Vgg16(vgg16_npy_path=constants.getNutstorDir()+'/tf/morvan/vgg16.npy',
+                restore_from=constants.getNutstorDir()+'/tf/morvan/vggmodel/transfer_learn')
     vgg.predict(
         [constants.getNutstorDir()+'/tf/morvan/images/kittycat/000129037.jpg', constants.getNutstorDir()+'/tf/morvan/images/tiger/391412.jpg'])
 
 
 if __name__ == '__main__':
     # download()
-    train()
-#     eval()
+#     train()
+    eval()
