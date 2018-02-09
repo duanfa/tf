@@ -141,7 +141,7 @@ class Vgg16:
             axs[i].set_xticks(()); axs[i].set_yticks(())
         plt.show()
 
-    def save(self, path='./morvan/tf/vggmodel/transfer_learn'):
+    def save(self, path=constants.getNutstorDir()+'/tf/morvan/vggmodel/transfer_learn'):
         saver = tf.train.Saver()
         saver.save(self.sess, path, write_meta_graph=False)
 
@@ -159,14 +159,14 @@ def train():
     xs = np.concatenate(tigers_x + cats_x, axis=0)
     ys = np.concatenate((tigers_y, cats_y), axis=0)
 
-    vgg = Vgg16(vgg16_npy_path='./morvan/tf/vgg16.npy')
+    vgg = Vgg16(vgg16_npy_path=constants.getNutstorDir()+'/tf/morvan/vgg16.npy')
     print('Net built')
     for i in range(100):
         b_idx = np.random.randint(0, len(xs), 6)
         train_loss = vgg.train(xs[b_idx], ys[b_idx])
         print(i, 'train loss: ', train_loss)
 
-    vgg.save('./morvan/tf/vggmodel/transfer_learn')      # save learned fc layers
+    vgg.save(constants.getNutstorDir()+'/tf/morvan/vggmodel/transfer_learn')      # save learned fc layers
 
 
 def eval():
