@@ -115,7 +115,7 @@ print("Root Mean Squared Error: %0.3f" % root_mean_squared_error)
 calibration_data = pd.DataFrame()
 calibration_data["predictions"] = pd.Series(predictions)
 calibration_data["targets"] = pd.Series(targets)
-calibration_data.describe()
+println(calibration_data.describe())
 
 sample = california_housing_dataframe.sample(n=300)
 # Get the min and max total_rooms values.
